@@ -202,7 +202,7 @@ client.on('interactionCreate', async (interaction) => {
 
   if (interaction.isButton()) {
     if (!interaction.member.voice.channel) {
-      return interaction.reply({ content: 'You need to join a voice channel to use the buttons!', ephemeral: true });
+      return interaction.reply({ content: 'You need to join a voice channel to use my bluetooth function <:AigisStare:1369904639679529021>', ephemeral: true });
     }
     const player = manager.players.get(interaction.guild.id);
     if (!player) return;
@@ -211,7 +211,7 @@ client.on('interactionCreate', async (interaction) => {
     if (!currentTrack) return;
 
     if (currentTrack.requester.id !== interaction.user.id) {
-      return interaction.reply({ content: 'Only the person who requested this song can use these buttons!', ephemeral: true });
+      return interaction.reply({ content: 'Only the person who requested this song can use these buttons! <:AigisStare:1369904639679529021>', ephemeral: true });
     }
 
     switch (interaction.customId) {
@@ -248,7 +248,7 @@ client.on('interactionCreate', async (interaction) => {
         }
         player.set('manualStop', true);
         const stopEmbed = new EmbedBuilder()
-          .setDescription('Queue has ended!')
+          .setDescription('Queue has ended!! I Hope that was optimal for you <:Cat:1369866557617995818>')
           .setColor('#FF0000')
           .setTimestamp();
         await interaction.channel.send({ embeds: [stopEmbed] });
@@ -263,7 +263,7 @@ client.on('interactionCreate', async (interaction) => {
         const queue = player.queue;
         const currentTrack = player.queue.current;
         let description = queue.length > 0 ? queue.map((track, i) => 
-          `${i + 1}. [${track.title}](${track.uri})`).join('\n') : 'No songs in queue';
+          `${i + 1}. [${track.title}](${track.uri})`).join('\n') : 'There are No songs in queue... as they say?';
 
         if (currentTrack) description = `**Now Playing:**\n[${currentTrack.title}](${currentTrack.uri})\n\n**Queue:**\n${description}`;
 
@@ -306,7 +306,7 @@ client.on('interactionCreate', async (interaction) => {
 
   if (commandName === 'play') {
     if (!interaction.member.voice.channel) {
-      return interaction.reply({ content: 'Join a voice channel first!', ephemeral: true });
+      return interaction.reply({ content: 'Join a voice channel first! <:AigisStare:1369904639679529021>', ephemeral: true });
     }
 
     const player = manager.create({
@@ -327,7 +327,7 @@ client.on('interactionCreate', async (interaction) => {
       case 'TRACK_LOADED':
       case 'SEARCH_RESULT':
         if (!res.tracks || res.tracks.length === 0) {
-          await interaction.reply({ content: 'No results found! Please try a different search term.', ephemeral: true });
+          await interaction.reply({ content: 'No results found! Please try a different search term..', ephemeral: true });
           return;
         }
         const track = res.tracks[0];
@@ -344,10 +344,10 @@ client.on('interactionCreate', async (interaction) => {
         if (!player.playing && !player.paused) player.play();
         break;
       case 'NO_MATCHES':
-        await interaction.reply({ content: 'No results found! Please try a different search term.', ephemeral: true });
+        await interaction.reply({ content: 'No results found! Please try a different search term..', ephemeral: true });
         break;
       case 'LOAD_FAILED':
-        await interaction.reply({ content: 'Failed to load track! Please try again or use a different link.', ephemeral: true });
+        await interaction.reply({ content: 'My Bluetooth doesnt appear to be working for that link.. Please try again or use a different link.', ephemeral: true });
         break;
     }
   }
@@ -400,7 +400,7 @@ client.on('interactionCreate', async (interaction) => {
     let description = queue.length > 0 ? queue.map((track, i) => 
       `${i + 1}. [${track.title}](${track.uri})`).join('\n') : 'No songs in queue';
 
-    if (currentTrack) description = `**Now Playing:**\n[${currentTrack.title}](${currentTrack.uri})\n\n**Queue:**\n${description}`;
+    if (currentTrack) description = `**Now Playing:**\n[${currentTrack.title}](${currentTrack.uri})\n\n**Queue:**\n${description} <a:aigisvibe:1369905323199959111>`;
 
     const embed = new EmbedBuilder()
       .setTitle('🎵 Queue')
@@ -625,7 +625,7 @@ client.on('interactionCreate', async (interaction) => {
   if (commandName === 'ping') {
     const ping = Math.round(client.ws.ping);
     const embed = new EmbedBuilder()
-      .setTitle('🏓 Pong!')
+      .setTitle('🏓 Pong! as they say.')
       .setDescription(`WebSocket Ping: ${ping}ms`)
       .setColor('#FF0000')
       .setFooter({ 
