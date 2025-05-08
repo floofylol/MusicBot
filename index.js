@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, '0.0.0.0', () => {
-  console.log(Express server running on port ${port});
+  console.log(`Express server running on port ${port}`);
 });
 
 
