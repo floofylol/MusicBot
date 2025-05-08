@@ -138,25 +138,7 @@ client.once('ready', async () => {
   console.log(Logged in as ${client.user.tag});
   manager.init(client.user.id);
 
-  const statuses = [
-    'Memories of You',
-    'Memories of The School',
-    'Burn My Dread',
-    'Wiping All Out',
-    "It's Going Down Now",
-    'Soul Phase',
-    'Junpei Yapping',
-    'Sleep Phonk'
-  ];
-  let index = 0;
-
-  function updateStatus() {
-    client.user.setActivity(statuses[index], { type: ActivityType.Listening });
-    index = (index + 1) % statuses.length;
-  }
-
-  updateStatus();
-  setInterval(updateStatus, 5 * 60 * 1000); 
+  client.user.setActivity('Memories of You', { type: ActivityType.Listening });
 
   try {
     console.log('Refreshing slash commands...');
