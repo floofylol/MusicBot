@@ -596,7 +596,7 @@ client.on('interactionCreate', async (interaction) => {
           '`/ping` - 📡 Check latency\n' +
           '`/stats` - 📊 View statistics\n' +
           '`/invite` - 📨 Invite bot to server\n' +
-          '`/sees` - 💬 Join the server im from <:Cat:1369866557617995818>
+          '`/sees` - 💬 Join the server im from <:Cat:1369866557617995818> !!'
         }
       )
       .setColor('#FF0000')
