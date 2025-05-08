@@ -1,52 +1,97 @@
-require('dotenv').config();
-const { Client, GatewayIntentBits, REST, Routes, SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ActivityType, StringSelectMenuBuilder } = require('discord.js');
+const commands = [
+  new SlashCommandBuilder()
+    .setName('play')
+    .setDescription('Plays a song')
+    .addStringOption(option => 
+      option.setName('query')
+        .setDescription('Song name or URL')
+        .setRequired(true)),
+  new SlashCommandBuilder()
+    .setName('pause')
+    .setDescription('Pause the current song'),
+  new SlashCommandBuilder()
+    .setName('resume')
+    .setDescription('Resume the current song'),
+  new SlashCommandBuilder()
+    .setName('skip')
+    .setDescription('Skip to the next song'),
+  new SlashCommandBuilder()
+    .setName('queue')
+    .setDescription('Show the current queue'),
+  new SlashCommandBuilder()
+    .setName('nowplaying')
+    .setDescription('Show currently playing song'),
+  new SlashCommandBuilder()
+    .setName('shuffle')
+    .setDescription('Shuffle the queue'),
+  new SlashCommandBuilder()
+    .setName('loop')
+    .setDescription('Toggle loop mode')
+    .addStringOption(option =>
+      option.setName('mode')
+        .setDescription('Loop mode')
+        .setRequired(true)
+        .addChoices(
+          { name: 'Off', value: 'off' },
+          { name: 'Track', value: 'track' },
+          { name: 'Queue', value: 'queue' }
+        )),
+  new SlashCommandBuilder()
+    .setName('remove')
+    .setDescription('Remove a song from the queue')
+    .addIntegerOption(option =>
+      option.setName('position')
+        .setDescription('Position in queue')
+        .setRequired(true)),
+  new SlashCommandBuilder()
+    .setName('move')
+    .setDescription('Move a song to a different position')
+    .addIntegerOption(option =>
+      option.setName('from')
+        .setDescription('From position')
+        .setRequired(true))
+    .addIntegerOption(option =>
+      option.setName('to')
+        .setDescription('To position')
+        .setRequired(true)),
+  new SlashCommandBuilder()
+    .setName('clearqueue')
+    .setDescription('Clear the queue'),
+  new SlashCommandBuilder()
+    .setName('stop')
+    .setDescription('Stops the music and leaves'),
+  new SlashCommandBuilder()
+    .setName('volume')
+    .setDescription('Set the volume')
+    .addIntegerOption(option =>
+      option.setName('level')
+        .setDescription('Volume level (0-100)')
+        .setRequired(true)),
+  new SlashCommandBuilder()
+    .setName('247')
+    .setDescription('Toggle 24/7 mode'),
+  new SlashCommandBuilder()
+    .setName('help')
+    .setDescription('Shows all commands'),
+  new SlashCommandBuilder()
+    .setName('invite')
+    .setDescription('Get bot invite link'),
+  new SlashCommandBuilder()
+    .setName('ping')
+    .setDescription('Shows bot ping'),
+  new SlashCommandBuilder()
+    .setName('stats')
+    .setDescription('Shows bot statistics'),
+  new SlashCommandBuilder()
+    .setName('sees')
+    .setDescription('Join my original server'),
 
-const express = require('express');
-const app = express();
-const port = 3000;
-
-app.get('/', (req, res) => {
-  res.send('Discord Music Bot is running!');
-});
-
-app.listen(port, '0.0.0.0', () => {
-  console.log(`Express server running on port ${port}`);
-});
-
-const { Manager } = require('erela.js');
-
-const nodes = [{
-  host: 'lava-v3.ajieblogs.eu.org',
-  port: 80,
-  password: 'https://dsc.gg/ajidevserver',
-  secure: false,
-}];
-
-const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildVoiceStates,
-  ],
-});
-
-const manager = new Manager({
-  nodes,
-  send(id, payload) {
-    const guild = client.guilds.cache.get(id);
-    if (guild) guild.shard.send(payload);
-  },
-  defaultSearchPlatform: 'youtube',
-  autoPlay: true,
-  clientName: `${client.user?.username || 'Music Bot'}`,
-  plugins: []
-});
-
-const commands = [...]; // (Unchanged - your existing slash commands array)
+].map(command => command.toJSON());
 
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_BOT_TOKEN);
 
 client.once('ready', async () => {
-  console.log(`Logged in as ${client.user.tag}`);
+  console.log(Logged in as ${client.user.tag});
   manager.init(client.user.id);
 
   const statuses = [
