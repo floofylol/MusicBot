@@ -428,7 +428,7 @@ client.on('interactionCreate', async (interaction) => {
 
     player.queue.shuffle();
     const embed = new EmbedBuilder()
-      .setDescription('🔀 Shuffled the queue')
+      .setDescription('🔀 Shuffled the queue.. as they say <:Cat:1369866557617995818>')
       .setColor('#FF0000')
       .setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL() })
       .setTimestamp();
