@@ -640,7 +640,6 @@ client.on('interactionCreate', async (interaction) => {
       })
       .setTimestamp();
     await interaction.reply({ embeds: [embed] });
-  }
   
 manager.on('nodeConnect', (node) => {
   console.log(`Node ${node.options.identifier} connected`);
