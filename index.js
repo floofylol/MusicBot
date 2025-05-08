@@ -91,7 +91,7 @@ const commands = [
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_BOT_TOKEN);
 
 client.once('ready', async () => {
-  console.log(Logged in as ${client.user.tag});
+  console.log(`Logged in as ${client.user.tag}`);
   manager.init(client.user.id);
 
   const statuses = [
