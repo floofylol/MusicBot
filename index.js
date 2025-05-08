@@ -127,7 +127,7 @@ const commands = [
     .setName('stats')
     .setDescription('Shows bot statistics'),
   new SlashCommandBuilder()
-    .setName('support')
+    .setName('sees')
     .setDescription('Join my original server'),
 
 ].map(command => command.toJSON());
@@ -663,7 +663,7 @@ client.on('interactionCreate', async (interaction) => {
     await interaction.reply({ embeds: [embed] });
   }
 
-  if (commandName === 'support') {
+  if (commandName === 'sees') {
     const embed = new EmbedBuilder()
       .setTitle('💬 Original Server')
       .setDescription(`[Click here to join SEES](${process.env.SUPPORT_SERVER})`)
