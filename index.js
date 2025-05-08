@@ -333,7 +333,7 @@ client.on('interactionCreate', async (interaction) => {
         const track = res.tracks[0];
         player.queue.add(track);
         const embed = new EmbedBuilder()
-          .setDescription(`Added [${track.title}](${track.uri}) to the queue`)
+          .setDescription(`Added [${track.title}](${track.uri}) to the queue <a:Aigis_Dance:1369907501675581510>`)
           .setColor('#FF0000')
           .setFooter({ 
             text: `Requested by ${interaction.user.tag}`,
@@ -534,7 +534,7 @@ client.on('interactionCreate', async (interaction) => {
         .setTimestamp();
       await interaction.channel.send({ embeds: [stopEmbed] });
       player.destroy();
-      await interaction.reply({ content: '⏹️ Stopped the music and left', ephemeral: true });
+      await interaction.reply({ content: 'I comprehend..', ephemeral: true });
     } else {
       await interaction.reply({ content: 'Not playing anything!', ephemeral: true });
     }
@@ -546,7 +546,7 @@ client.on('interactionCreate', async (interaction) => {
 
     const volume = options.getInteger('level');
     if (volume < 0 || volume > 100) {
-      return interaction.reply({ content: 'Volume must be between 0 and 100!', ephemeral: true });
+      return interaction.reply({ content: 'Volume must be between 0 and 100!! It is not optimal to exceed these values <:AigisStare:1369904639679529021>', ephemeral: true });
     }
 
     player.setVolume(volume);
