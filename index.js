@@ -135,7 +135,7 @@ const commands = [
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_BOT_TOKEN);
 
 client.once('ready', async () => {
-  console.log(`Logged in as ${client.user.tag}`);
+  console.log(Logged in as ${client.user.tag});
   manager.init(client.user.id);
 
   const statuses = [
@@ -156,7 +156,7 @@ client.once('ready', async () => {
   }
 
   updateStatus();
-  setInterval(updateStatus, 5 * 60 * 1000); // 5 minutes
+  setInterval(updateStatus, 5 * 60 * 1000); 
 
   try {
     console.log('Refreshing slash commands...');
@@ -172,7 +172,7 @@ client.on('raw', (data) => manager.updateVoiceState(data));
 function createMusicEmbed(track) {
   return new EmbedBuilder()
     .setTitle('🎵 Now Playing')
-    .setDescription(`[${track.title}](${track.uri})`)
+    .setDescription([${track.title}](${track.uri}))
     .addFields(
       { name: '👤 Artist', value: track.author, inline: true },
       { name: '⏱️ Duration', value: formatDuration(track.duration), inline: true }
@@ -184,7 +184,7 @@ function createMusicEmbed(track) {
 function formatDuration(duration) {
   const minutes = Math.floor(duration / 60000);
   const seconds = ((duration % 60000) / 1000).toFixed(0);
-  return `${minutes}:${seconds.padStart(2, '0')}`;
+  return ${minutes}:${seconds.padStart(2, '0')};
 }
 
 function createControlButtons() {
@@ -275,15 +275,15 @@ client.on('interactionCreate', async (interaction) => {
         break;
       case 'loop':
         player.setQueueRepeat(!player.queueRepeat);
-        await interaction.reply({ content: `Loop: ${player.queueRepeat ? 'Enabled' : 'Disabled'}`, ephemeral: true });
+        await interaction.reply({ content: Loop: ${player.queueRepeat ? 'Enabled' : 'Disabled'}, ephemeral: true });
         break;
       case 'queue':
         const queue = player.queue;
         const currentTrack = player.queue.current;
         let description = queue.length > 0 ? queue.map((track, i) => 
-          `${i + 1}. [${track.title}](${track.uri})`).join('\n') : 'There are No songs in queue... as they say?';
+          ${i + 1}. [${track.title}](${track.uri})).join('\n') : 'There are No songs in queue... as they say?';
 
-        if (currentTrack) description = `**Now Playing:**\n[${currentTrack.title}](${currentTrack.uri})\n\n**Queue:**\n${description}`;
+        if (currentTrack) description = **Now Playing:**\n[${currentTrack.title}](${currentTrack.uri})\n\n**Queue:**\n${description};
 
         const embed = new EmbedBuilder()
           .setTitle('Queue')
@@ -308,10 +308,10 @@ client.on('interactionCreate', async (interaction) => {
     });
 
     const embed = new EmbedBuilder()
-      .setDescription(`🎵 Applied filter: ${filters[filter]}`)
+      .setDescription(🎵 Applied filter: ${filters[filter]})
       .setColor('#FF0000')
       .setFooter({ 
-        text: `Requested by ${interaction.user.tag}`,
+        text: Requested by ${interaction.user.tag},
         iconURL: interaction.user.displayAvatarURL()
       })
       .setTimestamp();
@@ -351,10 +351,10 @@ client.on('interactionCreate', async (interaction) => {
         const track = res.tracks[0];
         player.queue.add(track);
         const embed = new EmbedBuilder()
-          .setDescription(`Added [${track.title}](${track.uri}) to the queue <a:Aigis_Dance:1369907501675581510>`)
+          .setDescription(Added [${track.title}](${track.uri}) to the queue <a:Aigis_Dance:1369907501675581510>)
           .setColor('#FF0000')
           .setFooter({ 
-            text: `Requested by ${interaction.user.tag}`,
+            text: Requested by ${interaction.user.tag},
             iconURL: interaction.user.displayAvatarURL()
           })
           .setTimestamp();
@@ -378,7 +378,7 @@ client.on('interactionCreate', async (interaction) => {
     const embed = new EmbedBuilder()
       .setDescription('⏸️ Paused')
       .setColor('#FF0000')
-      .setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL() })
+      .setFooter({ text: Requested by ${interaction.user.tag}, iconURL: interaction.user.displayAvatarURL() })
       .setTimestamp();
     await interaction.reply({ embeds: [embed] });
   }
@@ -391,7 +391,7 @@ client.on('interactionCreate', async (interaction) => {
     const embed = new EmbedBuilder()
       .setDescription('▶️ Resumed')
       .setColor('#FF0000')
-      .setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL() })
+      .setFooter({ text: Requested by ${interaction.user.tag}, iconURL: interaction.user.displayAvatarURL() })
       .setTimestamp();
     await interaction.reply({ embeds: [embed] });
   }
@@ -404,7 +404,7 @@ client.on('interactionCreate', async (interaction) => {
     const embed = new EmbedBuilder()
       .setDescription('⏭️ Skipped')
       .setColor('#FF0000')
-      .setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL() })
+      .setFooter({ text: Requested by ${interaction.user.tag}, iconURL: interaction.user.displayAvatarURL() })
       .setTimestamp();
     await interaction.reply({ embeds: [embed] });
   }
@@ -416,15 +416,15 @@ client.on('interactionCreate', async (interaction) => {
     const queue = player.queue;
     const currentTrack = player.queue.current;
     let description = queue.length > 0 ? queue.map((track, i) => 
-      `${i + 1}. [${track.title}](${track.uri})`).join('\n') : 'No songs in queue';
+      ${i + 1}. [${track.title}](${track.uri})).join('\n') : 'No songs in queue';
 
-    if (currentTrack) description = `**Now Playing:**\n[${currentTrack.title}](${currentTrack.uri})\n\n**Queue:**\n${description} <a:aigisvibe:1369905323199959111>`;
+    if (currentTrack) description = **Now Playing:**\n[${currentTrack.title}](${currentTrack.uri})\n\n**Queue:**\n${description} <a:aigisvibe:1369905323199959111>;
 
     const embed = new EmbedBuilder()
       .setTitle('🎵 Queue')
       .setDescription(description)
       .setColor('#FF0000')
-      .setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL() })
+      .setFooter({ text: Requested by ${interaction.user.tag}, iconURL: interaction.user.displayAvatarURL() })
       .setTimestamp();
     await interaction.reply({ embeds: [embed] });
   }
@@ -448,7 +448,7 @@ client.on('interactionCreate', async (interaction) => {
     const embed = new EmbedBuilder()
       .setDescription('🔀 Shuffled the queue.. as they say <:Cat:1369866557617995818>')
       .setColor('#FF0000')
-      .setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL() })
+      .setFooter({ text: Requested by ${interaction.user.tag}, iconURL: interaction.user.displayAvatarURL() })
       .setTimestamp();
     await interaction.reply({ embeds: [embed] });
   }
@@ -474,9 +474,9 @@ client.on('interactionCreate', async (interaction) => {
     }
 
     const embed = new EmbedBuilder()
-      .setDescription(`🔄 Loop mode set to: ${mode}`)
+      .setDescription(🔄 Loop mode set to: ${mode})
       .setColor('#FF0000')
-      .setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL() })
+      .setFooter({ text: Requested by ${interaction.user.tag}, iconURL: interaction.user.displayAvatarURL() })
       .setTimestamp();
     await interaction.reply({ embeds: [embed] });
   }
@@ -492,9 +492,9 @@ client.on('interactionCreate', async (interaction) => {
 
     const removed = player.queue.remove(pos);
     const embed = new EmbedBuilder()
-      .setDescription(`❌ Removed [${removed.title}](${removed.uri})`)
+      .setDescription(❌ Removed [${removed.title}](${removed.uri}))
       .setColor('#FF0000')
-      .setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL() })
+      .setFooter({ text: Requested by ${interaction.user.tag}, iconURL: interaction.user.displayAvatarURL() })
       .setTimestamp();
     await interaction.reply({ embeds: [embed] });
   }
@@ -515,9 +515,9 @@ client.on('interactionCreate', async (interaction) => {
     player.queue.add(track, to);
 
     const embed = new EmbedBuilder()
-      .setDescription(`📦 Moved [${track.title}](${track.uri}) to position ${to + 1}`)
+      .setDescription(📦 Moved [${track.title}](${track.uri}) to position ${to + 1})
       .setColor('#FF0000')
-      .setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL() })
+      .setFooter({ text: Requested by ${interaction.user.tag}, iconURL: interaction.user.displayAvatarURL() })
       .setTimestamp();
     await interaction.reply({ embeds: [embed] });
   }
@@ -530,7 +530,7 @@ client.on('interactionCreate', async (interaction) => {
     const embed = new EmbedBuilder()
       .setDescription('🗑️ Cleared the queue')
       .setColor('#FF0000')
-      .setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL() })
+      .setFooter({ text: Requested by ${interaction.user.tag}, iconURL: interaction.user.displayAvatarURL() })
       .setTimestamp();
     await interaction.reply({ embeds: [embed] });
   }
@@ -568,7 +568,7 @@ client.on('interactionCreate', async (interaction) => {
     }
 
     player.setVolume(volume);
-    await interaction.reply(`🔊 Volume set to ${volume}%`);
+    await interaction.reply(🔊 Volume set to ${volume}%);
   }
 
   if (commandName === '247') {
@@ -577,10 +577,10 @@ client.on('interactionCreate', async (interaction) => {
 
     player.twentyFourSeven = !player.twentyFourSeven;
     const embed = new EmbedBuilder()
-      .setDescription(`🎵 24/7 mode is now ${player.twentyFourSeven ? 'enabled' : 'disabled'}`)
+      .setDescription(🎵 24/7 mode is now ${player.twentyFourSeven ? 'enabled' : 'disabled'})
       .setColor('#FF0000')
       .setFooter({ 
-        text: `Requested by ${interaction.user.tag}`,
+        text: Requested by ${interaction.user.tag},
         iconURL: interaction.user.displayAvatarURL()
       })
       .setTimestamp();
@@ -590,37 +590,37 @@ client.on('interactionCreate', async (interaction) => {
 
   if (commandName === 'help') {
     const embed = new EmbedBuilder()
-      .setTitle(`🎵 ${client.user.username} Commands`)
+      .setTitle(🎵 ${client.user.username} Commands)
       .setDescription('Aigis Awesome Bluetooth Mode <:Cat:1369866557617995818>')
       .addFields(
         { name: '🎵 Music Controls', value: 
-          '`/play` - Play a song from name/URL\n' +
-          '`/pause` - ⏸️ Pause current playback\n' +
-          '`/resume` - ▶️ Resume playback\n' +
-          '`/stop` - ⏹️ Stop and disconnect\n' +
-          '`/skip` - ⏭️ Skip to next song\n' +
-          '`/volume` - 🔊 Adjust volume (0-100)'
+          '/play - Play a song from name/URL\n' +
+          '/pause - ⏸️ Pause current playback\n' +
+          '/resume - ▶️ Resume playback\n' +
+          '/stop - ⏹️ Stop and disconnect\n' +
+          '/skip - ⏭️ Skip to next song\n' +
+          '/volume - 🔊 Adjust volume (0-100)'
         },
         { name: '📑 Queue Management', value: 
-          '`/queue` - 📜 View current queue\n' +
-          '`/nowplaying` - 🎵 Show current track\n' +
-          '`/shuffle` - 🔀 Shuffle the queue\n' +
-          '`/loop` - 🔁 Set loop mode\n' +
-          '`/remove` - ❌ Remove a song\n' +
-          '`/move` - ↕️ Move track position'
+          '/queue - 📜 View current queue\n' +
+          '/nowplaying - 🎵 Show current track\n' +
+          '/shuffle - 🔀 Shuffle the queue\n' +
+          '/loop - 🔁 Set loop mode\n' +
+          '/remove - ❌ Remove a song\n' +
+          '/move - ↕️ Move track position'
         },
         { name: '⚙️ Utility', value: 
-          '`/247` - 🔄 Toggle 24/7 mode\n' +
-          '`/ping` - 📡 Check latency\n' +
-          '`/stats` - 📊 View statistics\n' +
-          '`/invite` - 📨 Invite bot to server\n' +
-          '`/sees` - 💬 Join the server im from <:Cat:1369866557617995818> !!'
+          '/247 - 🔄 Toggle 24/7 mode\n' +
+          '/ping - 📡 Check latency\n' +
+          '/stats - 📊 View statistics\n' +
+          '/invite - 📨 Invite bot to server\n' +
+          '/sees - 💬 Join the server im from <:Cat:1369866557617995818> !!'
         }
       )
       .setColor('#FF0000')
       .setThumbnail(client.user.displayAvatarURL())
       .setFooter({ 
-        text: `Made By p3femc • Requested by ${interaction.user.tag}`,
+        text: Made By p3femc • Requested by ${interaction.user.tag},
         iconURL: interaction.user.displayAvatarURL()
       })
       .setTimestamp();
@@ -630,10 +630,10 @@ client.on('interactionCreate', async (interaction) => {
   if (commandName === 'sees') {
     const embed = new EmbedBuilder()
       .setTitle('📨 Invite Me')
-      .setDescription(`[Click here to invite me to your server](https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot%20applications.commands)`)
+      .setDescription([Click here to invite me to your server](https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot%20applications.commands))
       .setColor('#FF0000')
       .setFooter({ 
-        text: `Requested by ${interaction.user.tag}`,
+        text: Requested by ${interaction.user.tag},
         iconURL: interaction.user.displayAvatarURL()
       })
       .setTimestamp();
@@ -644,10 +644,10 @@ client.on('interactionCreate', async (interaction) => {
     const ping = Math.round(client.ws.ping);
     const embed = new EmbedBuilder()
       .setTitle('🏓 Pong! as they say.')
-      .setDescription(`WebSocket Ping: ${ping}ms`)
+      .setDescription(WebSocket Ping: ${ping}ms)
       .setColor('#FF0000')
       .setFooter({ 
-        text: `Requested by ${interaction.user.tag}`,
+        text: Requested by ${interaction.user.tag},
         iconURL: interaction.user.displayAvatarURL()
       })
       .setTimestamp();
@@ -666,15 +666,15 @@ client.on('interactionCreate', async (interaction) => {
     const embed = new EmbedBuilder()
       .setTitle('📊 Bot Statistics')
       .addFields(
-        { name: '⌚ Uptime', value: `${days}d ${hours}h ${minutes}m ${seconds}s`, inline: true },
-        { name: '🎵 Active Players', value: `${manager.players.size}`, inline: true },
-        { name: '🌐 Servers', value: `${client.guilds.cache.size}`, inline: true },
-        { name: '👥 Users', value: `${client.users.cache.size}`, inline: true },
-        { name: '📡 Ping', value: `${Math.round(client.ws.ping)}ms`, inline: true }
+        { name: '⌚ Uptime', value: ${days}d ${hours}h ${minutes}m ${seconds}s, inline: true },
+        { name: '🎵 Active Players', value: ${manager.players.size}, inline: true },
+        { name: '🌐 Servers', value: ${client.guilds.cache.size}, inline: true },
+        { name: '👥 Users', value: ${client.users.cache.size}, inline: true },
+        { name: '📡 Ping', value: ${Math.round(client.ws.ping)}ms, inline: true }
       )
       .setColor('#FF0000')
       .setFooter({ 
-        text: `Requested by ${interaction.user.tag}`,
+        text: Requested by ${interaction.user.tag},
         iconURL: interaction.user.displayAvatarURL()
       })
       .setTimestamp();
@@ -684,10 +684,10 @@ client.on('interactionCreate', async (interaction) => {
   if (commandName === 'sees') {
     const embed = new EmbedBuilder()
       .setTitle('💬 Original Server')
-      .setDescription(`[Click here to join SEES](${process.env.SUPPORT_SERVER})`)
+      .setDescription([Click here to join SEES](${process.env.SUPPORT_SERVER}))
       .setColor('#FF0000')
       .setFooter({ 
-        text: `Requested by ${interaction.user.tag}`,
+        text: Requested by ${interaction.user.tag},
         iconURL: interaction.user.displayAvatarURL()
       })
       .setTimestamp();
@@ -696,11 +696,11 @@ client.on('interactionCreate', async (interaction) => {
 });
 
 manager.on('nodeConnect', (node) => {
-  console.log(`Node ${node.options.identifier} connected`);
+  console.log(Node ${node.options.identifier} connected);
 });
 
 manager.on('nodeError', (node, error) => {
-  console.error(`Node ${node.options.identifier} error:`, error.message);
+  console.error(Node ${node.options.identifier} error:, error.message);
 });
 
 manager.on('trackStart', (player, track) => {
