@@ -118,17 +118,11 @@ const commands = [
     .setName('help')
     .setDescription('Shows all commands'),
   new SlashCommandBuilder()
-    .setName('invite')
-    .setDescription('Get bot invite link'),
-  new SlashCommandBuilder()
     .setName('ping')
     .setDescription('Shows bot ping'),
   new SlashCommandBuilder()
     .setName('stats')
     .setDescription('Shows bot statistics'),
-  new SlashCommandBuilder()
-    .setName('support')
-    .setDescription('Join our support server'),
 
 ].map(command => command.toJSON());
 
@@ -138,7 +132,7 @@ client.once('ready', async () => {
   console.log(`Logged in as ${client.user.tag}`);
   manager.init(client.user.id);
 
-  client.user.setActivity('/help | https://github.com/Unknownzop/MusicBot', { type: ActivityType.Listening });
+  client.user.setActivity('Burn my Dread', { type: ActivityType.Listening });
 
   try {
     console.log('Refreshing slash commands...');
@@ -595,31 +589,16 @@ client.on('interactionCreate', async (interaction) => {
           '`/247` - 🔄 Toggle 24/7 mode\n' +
           '`/ping` - 📡 Check latency\n' +
           '`/stats` - 📊 View statistics\n' +
-          '`/invite` - 📨 Invite bot to server\n' +
-          '`/support` - 💬 Join support server'
         }
       )
       .setColor('#FF0000')
       .setThumbnail(client.user.displayAvatarURL())
       .setFooter({ 
-        text: `Made By Unknownz • Requested by ${interaction.user.tag}`,
+        text: `Made By p3femc • Requested by ${interaction.user.tag}`,
         iconURL: interaction.user.displayAvatarURL()
       })
       .setTimestamp();
     return await interaction.reply({ embeds: [embed] });
-  }
-
-  if (commandName === 'invite') {
-    const embed = new EmbedBuilder()
-      .setTitle('📨 Invite Me')
-      .setDescription(`[Click here to invite me to your server](https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot%20applications.commands)`)
-      .setColor('#FF0000')
-      .setFooter({ 
-        text: `Requested by ${interaction.user.tag}`,
-        iconURL: interaction.user.displayAvatarURL()
-      })
-      .setTimestamp();
-    await interaction.reply({ embeds: [embed] });
   }
 
   if (commandName === 'ping') {
@@ -662,21 +641,7 @@ client.on('interactionCreate', async (interaction) => {
       .setTimestamp();
     await interaction.reply({ embeds: [embed] });
   }
-
-  if (commandName === 'support') {
-    const embed = new EmbedBuilder()
-      .setTitle('💬 Support Server')
-      .setDescription(`[Click here to join our support server](${process.env.SUPPORT_SERVER})`)
-      .setColor('#FF0000')
-      .setFooter({ 
-        text: `Requested by ${interaction.user.tag}`,
-        iconURL: interaction.user.displayAvatarURL()
-      })
-      .setTimestamp();
-    await interaction.reply({ embeds: [embed] });
-  }
-});
-
+  
 manager.on('nodeConnect', (node) => {
   console.log(`Node ${node.options.identifier} connected`);
 });
