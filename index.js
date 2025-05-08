@@ -1,3 +1,47 @@
+require('dotenv').config();
+const { Client, GatewayIntentBits, REST, Routes, SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ActivityType, StringSelectMenuBuilder } = require('discord.js');
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => {
+  res.send('Discord Music Bot is running!');
+});
+
+app.listen(port, '0.0.0.0', () => {
+  console.log(Express server running on port ${port});
+});
+
+
+const { Manager } = require('erela.js');
+
+const nodes = [{
+  host: 'lava-v3.ajieblogs.eu.org',
+  port: 80,
+  password: 'https://dsc.gg/ajidevserver',
+  secure: false,
+}];
+
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildVoiceStates,
+  ],
+});
+
+const manager = new Manager({
+  nodes,
+  send(id, payload) {
+    const guild = client.guilds.cache.get(id);
+    if (guild) guild.shard.send(payload);
+  },
+  defaultSearchPlatform: 'youtube',
+  autoPlay: true,
+  clientName: ${client.user?.username || 'Music Bot'},
+  plugins: []
+});
+
 const commands = [
   new SlashCommandBuilder()
     .setName('play')
