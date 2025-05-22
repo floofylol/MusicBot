@@ -62,7 +62,7 @@ function startAigisSpeech(channelId) {
       return;
     }
     const quote = aigisQuotes[Math.floor(Math.random() * aigisQuotes.length)];
-    channel.send(`🔧 Aigis: ${quote}`);
+    channel.send(`${quote}`);
   };
   sendQuote(); // Send immediately on startup
   setInterval(sendQuote, 1000 * 60 * 1); // Every 5 minutes
