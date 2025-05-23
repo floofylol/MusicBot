@@ -53,7 +53,7 @@ const aigisQuotes = [
   "<:Cat:1369866557617995818> I present vast fondness for this kitten emoticon...",
   "Preparing Orgia Mode.",
   "My functions are operating within normal parameters."
-  "sybau, as they say."
+  "sybau. as they say."
 ];
 
 // 🟡 Function to randomly send Aigis quotes
