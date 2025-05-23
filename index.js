@@ -45,13 +45,13 @@ const manager = new Manager({
 // 🟡 Aigis quote list
 const aigisQuotes = [
   "Hello Everyone. <a:Aigis_Dance:1369907501675581510>",
-  "Target acquired. Engaging.",
+  "All members are advised to adhere to the rules <:Cat:1369866557617995818>",
   "that evil twink will pay",
   "<:aigisling:1370453026434711563> I quite enjoy this emoticon, I find this depiction of me quite comical.",
   "I will continue to execute my mission.",
   "<:Cat:1369866557617995818>",
   "<:Cat:1369866557617995818> I present vast fondness for this kitten emoticon...",
-  "Preparing Orgia Mode.",
+  "<a:aigisdance:1372678211401678938>",
   "My functions are operating within normal parameters."
 ];
 
@@ -67,7 +67,7 @@ function startAigisSpeech(channelId) {
     channel.send(`${quote}`);
   };
   sendQuote(); // Send immediately on startup
-  setInterval(sendQuote, 1000 * 60 * 30); // Every 5 minutes
+  setInterval(sendQuote, 1000 * 60 * 50); // Every idk minutes
 }
 
 const commands = [
