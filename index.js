@@ -48,11 +48,11 @@ const aigisQuotes = [
   "All members are advised to adhere to the rules <:Cat:1369866557617995818>",
   "that evil twink will pay",
   "<:aigisling:1370453026434711563> I quite enjoy this emoticon, I find this depiction of me quite comical.",
-  "I will continue to execute my mission.",
-  "<:Cat:1369866557617995818>",
+  "I have scanned your actions. They require... adjustment...",
+  "This behavior is not... appropriate. Please reconsider....",
   "<:Cat:1369866557617995818> I present vast fondness for this kitten emoticon...",
   "<a:aigisdance:1372678211401678938>",
-  "My functions are operating within normal parameters."
+  "Everyone here expresses hatred towards Ryoji correct? Running a check for accuracy.. and if any elimination is necessary.."
 ];
 
 // 🟡 Function to randomly send Aigis quotes
@@ -91,7 +91,7 @@ client.once('ready', async () => {
   }
 
   // 🟡 Start Aigis quote messages
-  startAigisSpeech('997343618501197896');
+  startAigisSpeech('1369677117431742525');
 });
 
 // 🟢 Everything else (handlers, events, interactions, etc.) remains unchanged below this point
