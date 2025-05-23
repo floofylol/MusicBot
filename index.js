@@ -72,7 +72,42 @@ function startAigisSpeech(channelId) {
 
 const commands = [
   new SlashCommandBuilder().setName('ping').setDescription('Shows bot ping'),
-  // ... [rest of your commands remain unchanged]
+  new SlashCommandBuilder().setName('play')
+    .setDescription('Play a song')
+    .addStringOption(option => option.setName('query').setDescription('Song name or URL').setRequired(true)),
+  new SlashCommandBuilder().setName('pause').setDescription('Pause the current track'),
+  new SlashCommandBuilder().setName('resume').setDescription('Resume the current track'),
+  new SlashCommandBuilder().setName('skip').setDescription('Skip the current track'),
+  new SlashCommandBuilder().setName('queue').setDescription('Show the current queue'),
+  new SlashCommandBuilder().setName('nowplaying').setDescription('Show the current playing track'),
+  new SlashCommandBuilder().setName('shuffle').setDescription('Shuffle the queue'),
+  new SlashCommandBuilder().setName('loop')
+    .setDescription('Set loop mode')
+    .addStringOption(option =>
+      option.setName('mode')
+        .setDescription('Loop mode')
+        .setRequired(true)
+        .addChoices(
+          { name: 'off', value: 'off' },
+          { name: 'track', value: 'track' },
+          { name: 'queue', value: 'queue' }
+        )),
+  new SlashCommandBuilder().setName('remove')
+    .setDescription('Remove a song from the queue')
+    .addIntegerOption(option => option.setName('position').setDescription('Position in queue').setRequired(true)),
+  new SlashCommandBuilder().setName('move')
+    .setDescription('Move a song in the queue')
+    .addIntegerOption(option => option.setName('from').setDescription('From position').setRequired(true))
+    .addIntegerOption(option => option.setName('to').setDescription('To position').setRequired(true)),
+  new SlashCommandBuilder().setName('clearqueue').setDescription('Clear the current queue'),
+  new SlashCommandBuilder().setName('stop').setDescription('Stop playback and disconnect'),
+  new SlashCommandBuilder().setName('volume')
+    .setDescription('Set playback volume')
+    .addIntegerOption(option => option.setName('level').setDescription('Volume level (0-100)').setRequired(true)),
+  new SlashCommandBuilder().setName('247').setDescription('Toggle 24/7 mode'),
+  new SlashCommandBuilder().setName('help').setDescription('Show help menu'),
+  new SlashCommandBuilder().setName('sees').setDescription('Show original server invite'),
+  new SlashCommandBuilder().setName('stats').setDescription('Show bot statistics'),
 ].map(command => command.toJSON());
 
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_BOT_TOKEN);
