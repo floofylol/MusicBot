@@ -54,7 +54,6 @@ const aigisQuotes = [
   "Preparing Orgia Mode.",
   "My functions are operating within normal parameters."
   "sybau, as they say."
-  "I have a fear of Doors."
 ];
 
 // 🟡 Function to randomly send Aigis quotes
