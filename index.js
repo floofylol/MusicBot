@@ -51,6 +51,8 @@ const aigisQuotes = [
   "<:Cat:1369866557617995818> I present vast fondness for this kitten emoticon...",
   "Preparing Orgia Mode.",
   "My functions are operating within normal parameters."
+  "sybau, as they say."
+  "I have a fear of Doors."
 ];
 
 // 🟡 Function to randomly send Aigis quotes
@@ -65,7 +67,7 @@ function startAigisSpeech(channelId) {
     channel.send(`${quote}`);
   };
   sendQuote(); // Send immediately on startup
-  setInterval(sendQuote, 1000 * 60 * 1); // Every 5 minutes
+  setInterval(sendQuote, 1000 * 60 * 30); // Every 5 minutes
 }
 
 const commands = [
