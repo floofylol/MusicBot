@@ -97,6 +97,17 @@ client.once('ready', async () => {
 // 🟢 Everything else (handlers, events, interactions, etc.) remains unchanged below this point
 client.on('raw', (data) => manager.updateVoiceState(data));
 
+client.on('messageCreate', (message) => {
+  if (message.author.bot) return; // Ignore other bots
+  if (!message.guild) return;     // Ignore DMs
+
+  const content = message.content.toLowerCase();
+
+  if (content.includes('aigis')) {
+    message.channel.send('Hi There. <:Cat:1369866557617995818>');
+  }
+});
+
 function createMusicEmbed(track) {
   return new EmbedBuilder()
     .setTitle('🎵 Now Playing')
